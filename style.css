@@ -1,0 +1,48 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background: #1c1c1c;
+  color: #eee;
+}
+
+h1, h2 {
+  color: #bb0a0a;
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.list li {
+  margin: 5px 0;
+  padding: 5px;
+  background: #2c2c2c;
+  border-radius: 4px;
+}
+
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.item-grid .item {
+  text-align: center;
+  background: #2c2c2c;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.item-grid img {
+  max-width: 100px;
+  height: auto;
+}
+
+.quest-item {
+  background: #2c2c2c;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+}
