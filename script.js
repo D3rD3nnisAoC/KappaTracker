@@ -33,8 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Array mit mehreren QuestItem-Objekten
   const item = [
-  new QuestItem("Old firesteel", "/Bilder/Old Firesteel.webp"),
-  new QuestItem("Antique axe", "/Bilder/Antique_Axe.webp"),
+  new QuestItem("Old firesteel", "/images/Old Firesteel.webp"),
+  new QuestItem("Antique axe", "images/Antique_Axe.webp"),
   new QuestItem("Battered antique book", ""),
   new QuestItem("FireKlean gun lube", ""),
   new QuestItem("Golden rooster figurine", ""),
