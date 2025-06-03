@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kappa Tracker</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <h1>Kappa Tracker</h1>
 
-  <section>
+  <div id="home" class="home-buttons">
+    <button onclick="showSection('quests')">Kappa Quests</button>
+    <button onclick="showSection('items')">Collector Items</button>
+  </div>
+
+  <section id="quests" class="hidden">
     <h2>Quests</h2>
     <ul id="questList" class="list"></ul>
+    <button onclick="goHome()">Zurück</button>
   </section>
 
-  <section>
+  <section id="items" class="hidden">
     <h2>Collector Items</h2>
     <div id="itemList" class="item-grid"></div>
+    <button onclick="goHome()">Zurück</button>
   </section>
 
   <script src="script.js"></script>
-
 </body>
 </html>

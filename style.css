@@ -6,6 +6,7 @@ body {
 }
 
 h1, h2 {
+  align-items: center;
   color: hsl(0, 15%, 82%);
   outline: #b60808;
 }
@@ -59,4 +60,50 @@ h1, h2 {
 img {
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+.hidden {
+  display: none;
+}
+
+.home-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  gap: 20px;
+}
+
+.home-buttons button {
+  padding: 20px 40px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 12px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.home-buttons button:hover {
+  background-color: #0056b3;
+}
+
+body {
+  background-image: url("images/background.webp");
+  background-size: cover;         /* Skaliert das Bild, sodass der gesamte Bereich bedeckt ist */
+  background-position: center;    /* Zentriert das Bild */
+  background-repeat: no-repeat;   /* Wiederholt das Bild nicht */
+  min-height: 100vh;              /* Höhe mindestens so groß wie die Viewport-Höhe */
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;                   /* Textfarbe anpassen, falls nötig */
+}
+
+/* Optional: halbtransparenter Hintergrund für Inhalte */
+section, .home-buttons {
+  background-color: rgba(0, 0, 0, 0.6); /* schwarzer halbtransparenter Hintergrund */
+  padding: 20px;
+  border-radius: 12px;
+  margin: 20px auto;
+  width: fit-content;
 }

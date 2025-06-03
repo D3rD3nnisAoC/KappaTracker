@@ -1,0 +1,57 @@
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.quest-item {
+  text-align: center;
+  background: rgb(0, 0, 0); /* halbtransparent bei Hintergrundbild */
+  padding: 10px;
+  border-radius: 12px;
+  transition: transform 0.2s;
+}
+
+.quest-item:hover {
+  transform: scale(1.05);
+}
+
+.quest-item img {
+  border-radius: 8px;
+}
+
+.item-link {
+  display: block;
+  margin-top: 10px;
+  color: #49aa52;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.item-link:hover {
+  text-decoration: underline;
+}
+
+body {
+  background-image: url("images/background.webp");
+  background-size: cover;         /* Skaliert das Bild, sodass der gesamte Bereich bedeckt ist */
+  background-position: center;    /* Zentriert das Bild */
+  background-repeat: no-repeat;   /* Wiederholt das Bild nicht */
+  min-height: 100vh;              /* Höhe mindestens so groß wie die Viewport-Höhe */
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;                   /* Textfarbe anpassen, falls nötig */
+}
+
+/* Optional: halbtransparenter Hintergrund für Inhalte */
+section, .home-buttons {
+  background-color: rgba(0, 0, 0, 0.6); /* schwarzer halbtransparenter Hintergrund */
+  padding: 20px;
+  border-radius: 12px;
+  margin: 20px auto;
+  width: fit-content;
+}
+
