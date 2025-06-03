@@ -1,8 +1,21 @@
 body {
+  background-image: url("images/background.webp");
+  background-size: cover;         /* Skaliert das Bild, sodass der gesamte Bereich bedeckt ist */
+  background-position: center;    /* Zentriert das Bild */
+  background-repeat: no-repeat;   /* Wiederholt das Bild nicht */
+  min-height: 100vh;              /* Höhe mindestens so groß wie die Viewport-Höhe */
+  margin: 0;
   font-family: Arial, sans-serif;
+  color: white;                   /* Textfarbe anpassen, falls nötig */
+}
+
+/* Optional: halbtransparenter Hintergrund für Inhalte */
+section, .home-buttons {
+  background-color: rgba(0, 0, 0, 0.6); /* schwarzer halbtransparenter Hintergrund */
   padding: 20px;
-  background: #1c1c1c;
-  color: #8c8997;
+  border-radius: 12px;
+  margin: 20px auto;
+  width: fit-content;
 }
 
 h1, h2 {
@@ -88,22 +101,3 @@ img {
   background-color: #0056b3;
 }
 
-body {
-  background-image: url("images/background.webp");
-  background-size: cover;         /* Skaliert das Bild, sodass der gesamte Bereich bedeckt ist */
-  background-position: center;    /* Zentriert das Bild */
-  background-repeat: no-repeat;   /* Wiederholt das Bild nicht */
-  min-height: 100vh;              /* Höhe mindestens so groß wie die Viewport-Höhe */
-  margin: 0;
-  font-family: Arial, sans-serif;
-  color: white;                   /* Textfarbe anpassen, falls nötig */
-}
-
-/* Optional: halbtransparenter Hintergrund für Inhalte */
-section, .home-buttons {
-  background-color: rgba(0, 0, 0, 0.6); /* schwarzer halbtransparenter Hintergrund */
-  padding: 20px;
-  border-radius: 12px;
-  margin: 20px auto;
-  width: fit-content;
-}
