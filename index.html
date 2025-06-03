@@ -11,21 +11,9 @@
   <h1>Kappa Tracker</h1>
 
   <div id="home" class="home-buttons">
-    <button onclick="showSection('quests')">Kappa Quests</button>
-    <button onclick="showSection('items')">Collector Items</button>
+  <button onclick="window.location.href='KappaQuests.html'">Kappa Quests</button>
+  <button onclick="window.location.href='CollectorItems.html'">Collector Items</button>
   </div>
-
-  <section id="quests" class="hidden">
-    <h2>Quests</h2>
-    <ul id="questList" class="list"></ul>
-    <button onclick="goHome()">Zurück</button>
-  </section>
-
-  <section id="items" class="hidden">
-    <h2>Collector Items</h2>
-    <div id="itemList" class="item-grid"></div>
-    <button onclick="goHome()">Zurück</button>
-  </section>
 
   <script src="script.js"></script>
 </body>
