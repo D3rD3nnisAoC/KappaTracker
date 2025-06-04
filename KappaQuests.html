@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kappa Quests</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kappa Quests</title>
+  <link rel="stylesheet" href="KappaQuests.css">
 </head>
 <body>
-    <div><button>Test</button></div>
+    <header>
+    <button id="homeButton">🏠 Home</button>
+    
+    <select id="languageSelector">
+      <option value="en">English</option>
+      <option value="de">Deutsch</option>
+    </select>
+  </header>
+  <div class="container">
+    <h1>Kappa Quests</h1>
+
+    <input type="text" id="questFilter" placeholder="Suche Quests...">
+
+    <div id="questContainer"></div>
+  </div>
+    <script src="KappaQuests.js"></script>
 </body>
 </html>
