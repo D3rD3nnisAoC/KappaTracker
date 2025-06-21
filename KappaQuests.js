@@ -1,7 +1,3 @@
-document.getElementById("homeButton").addEventListener("click", () => {
-  window.location.href = "index.html"; // ggf. anpassen
-});
-
 document.getElementById("languageSelector").addEventListener("change", (e) => {
   const lang = e.target.value;
   document.querySelectorAll("[data-en]").forEach((el) => {
@@ -41,6 +37,7 @@ const traders = {
     "Test Drive – Part 3",
     "Test Drive – Part 4",
     "Test Drive – Part 5",
+    "Test Drive – Part 6",
     "Perfect Mediator",
     "Polikhim",
     "Regulated Materials",
@@ -283,6 +280,7 @@ const traders = {
       const container = document.getElementById("questContainer");
       container.innerHTML = "";
       const filter = document.getElementById("questFilter").value.toLowerCase();
+      const statusFilter = document.getElementById("questStatusFilter").value;
 
       for (const [trader, quests] of Object.entries(traders)) {
         const traderSection = document.createElement("div");
@@ -294,23 +292,36 @@ const traders = {
 
         const list = document.createElement("ul");
         quests.forEach((quest) => {
-          if (!quest.toLowerCase().includes(filter)) return;
+  const isChecked = !!checkedState[quest];
 
-          const li = document.createElement("li");
-          const label = document.createElement("label");
-          const checkbox = document.createElement("input");
-          checkbox.type = "checkbox";
-          checkbox.checked = !!checkedState[quest];
-          checkbox.addEventListener("change", () => {
-            checkedState[quest] = checkbox.checked;
-            saveChecked(checkedState);
-          });
+  // Text-Filter
+  if (!quest.toLowerCase().includes(filter)) return;
 
-          label.appendChild(checkbox);
-          label.appendChild(document.createTextNode(quest));
-          li.appendChild(label);
-          list.appendChild(li);
-        });
+  // Status-Filter
+  if (
+    (statusFilter === "completed" && !isChecked) ||
+    (statusFilter === "incomplete" && isChecked)
+  ) {
+    return;
+  }
+
+  const li = document.createElement("li");
+  const label = document.createElement("label");
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.checked = isChecked;
+  checkbox.addEventListener("change", () => {
+    checkedState[quest] = checkbox.checked;
+    saveChecked(checkedState);
+    renderQuests(); // aktualisieren, falls Status-Filter aktiv ist
+  });
+
+  label.appendChild(checkbox);
+  label.appendChild(document.createTextNode(quest));
+  li.appendChild(label);
+  list.appendChild(li);
+});
+
 
         traderSection.appendChild(list);
         container.appendChild(traderSection);
@@ -320,3 +331,4 @@ const traders = {
     document.getElementById("questFilter").addEventListener("input", renderQuests);
 
     document.addEventListener("DOMContentLoaded", renderQuests);
+    document.getElementById("questStatusFilter").addEventListener("change", renderQuests);
