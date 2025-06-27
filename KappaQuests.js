@@ -265,70 +265,93 @@ const traders = {
   ]
 };
 
+// Speichern & Laden des Status
+function loadChecked() {
+  return JSON.parse(localStorage.getItem("kappaChecked")) || {};
+}
 
-    function loadChecked() {
-      return JSON.parse(localStorage.getItem("kappaChecked")) || {};
-    }
+function saveChecked(checked) {
+  localStorage.setItem("kappaChecked", JSON.stringify(checked));
+}
 
-    function saveChecked(checked) {
-      localStorage.setItem("kappaChecked", JSON.stringify(checked));
-    }
+const checkedState = loadChecked();
 
-    const checkedState = loadChecked();
+// Trader-Sektion mit Bild erstellen
+function createTraderSection(traderName, quests) {
+  const section = document.createElement('div');
+  section.className = 'trader-section';
 
-    function renderQuests() {
-      const container = document.getElementById("questContainer");
-      container.innerHTML = "";
-      const filter = document.getElementById("questFilter").value.toLowerCase();
-      const statusFilter = document.getElementById("questStatusFilter").value;
+  const header = document.createElement('div');
+  header.className = 'trader-header';
 
-      for (const [trader, quests] of Object.entries(traders)) {
-        const traderSection = document.createElement("div");
-        traderSection.className = "trader-section";
+  const img = document.createElement('img');
+  img.src = `images/traders/${traderName.toLowerCase().replace(/ /g, "_")}.webp`;
+  img.alt = traderName;
+  img.className = 'trader-icon';
 
-        const traderTitle = document.createElement("h2");
-        traderTitle.textContent = trader;
-        traderSection.appendChild(traderTitle);
+  const h2 = document.createElement('h2');
+  h2.textContent = traderName;
 
-        const list = document.createElement("ul");
-        quests.forEach((quest) => {
-  const isChecked = !!checkedState[quest];
+  header.appendChild(img);
+  header.appendChild(h2);
+  section.appendChild(header);
 
-  // Text-Filter
-  if (!quest.toLowerCase().includes(filter)) return;
+  const ul = document.createElement('ul');
+  section.appendChild(ul);
 
-  // Status-Filter
-  if (
-    (statusFilter === "completed" && !isChecked) ||
-    (statusFilter === "incomplete" && isChecked)
-  ) {
-    return;
-  }
+  return section;
+}
 
-  const li = document.createElement("li");
-  const label = document.createElement("label");
-  const checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.checked = isChecked;
-  checkbox.addEventListener("change", () => {
-    checkedState[quest] = checkbox.checked;
-    saveChecked(checkedState);
-    renderQuests(); // aktualisieren, falls Status-Filter aktiv ist
-  });
+// Rendering der Quests
+function renderQuests() {
+  const container = document.getElementById("questContainer");
+  container.innerHTML = "";
 
-  label.appendChild(checkbox);
-  label.appendChild(document.createTextNode(quest));
-  li.appendChild(label);
-  list.appendChild(li);
-});
+  const filter = document.getElementById("questFilter").value.toLowerCase();
+  const statusFilter = document.getElementById("questStatusFilter").value;
 
+  for (const [trader, quests] of Object.entries(traders)) {
+    const section = createTraderSection(trader, quests);
+    const list = section.querySelector("ul");
 
-        traderSection.appendChild(list);
-        container.appendChild(traderSection);
+    quests.forEach((quest) => {
+      const isChecked = !!checkedState[quest];
+
+      // Text-Filter
+      if (!quest.toLowerCase().includes(filter)) return;
+
+      // Status-Filter
+      if (
+        (statusFilter === "completed" && !isChecked) ||
+        (statusFilter === "incomplete" && isChecked)
+      ) {
+        return;
       }
+
+      const li = document.createElement("li");
+      const label = document.createElement("label");
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.checked = isChecked;
+      checkbox.addEventListener("change", () => {
+        checkedState[quest] = checkbox.checked;
+        saveChecked(checkedState);
+        renderQuests();
+      });
+
+      label.appendChild(checkbox);
+      label.appendChild(document.createTextNode(quest));
+      li.appendChild(label);
+      list.appendChild(li);
+    });
+
+    if (list.children.length > 0) {
+      container.appendChild(section);
     }
+  }
+}
 
-    document.getElementById("questFilter").addEventListener("input", renderQuests);
-
-    document.addEventListener("DOMContentLoaded", renderQuests);
-    document.getElementById("questStatusFilter").addEventListener("change", renderQuests);
+// Event-Listener
+document.getElementById("questFilter").addEventListener("input", renderQuests);
+document.getElementById("questStatusFilter").addEventListener("change", renderQuests);
+document.addEventListener("DOMContentLoaded", renderQuests);

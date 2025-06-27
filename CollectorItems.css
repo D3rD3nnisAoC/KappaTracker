@@ -9,6 +9,11 @@ body {
   color: white;                   /* Textfarbe anpassen, falls nötig */
 }
 
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
 /* Optional: halbtransparenter Hintergrund für Inhalte */
 section, .home-buttons {
   background-color: rgba(0, 0, 0, 0.6); /* schwarzer halbtransparenter Hintergrund */
@@ -56,3 +61,58 @@ section, .home-buttons {
 }
 
 
+/* === Navbar === */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(43, 202, 22, 0.6);
+  padding: 10px 20px;
+  border-radius: 0 0 0%;
+  margin-bottom: 20px;
+  max-width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.home-icon img {
+  height: 80px;
+  width: 80px;
+  border-radius: 6px;
+  transition: transform 0.2s;
+}
+
+.home-icon img:hover {
+  transform: scale(1.1);
+}
+
+/* Sprache */
+#languageSelector {
+  padding: 6px 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: none;
+  background-color: #2e2e3f;
+  color: white;
+}
+
+/* Login */
+#loginButton {
+  background-color: #ffa726;
+  color: black;
+  padding: 8px 14px;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#loginButton:hover {
+  background-color: #ffb74d;
+}

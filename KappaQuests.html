@@ -1,39 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kappa Quests</title>
-  <link rel="stylesheet" href="KappaQuests.css">
+  <link rel="stylesheet" href="KappaQuests.css" />
 </head>
 <body>
-    <nav class="navbar">
-  <div class="navbar-left">
-    <a href="index.html" class="home-icon">
-      <img src="images/kappa_icon.png" alt="Home" />
-    </a>
-    <select id="languageSelector">
-      <option value="en">English</option>
-      <option value="de">Deutsch</option>
-    </select>
-  </div>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-left">
+      <a href="index.html" class="home-icon" title="Zur Startseite">
+        <img src="images/HomeButton.jpeg" alt="Home" />
+      </a>
+      <select id="languageSelector" title="Sprache wählen">
+        <option value="de">Deutsch</option>
+        <option value="en">English</option>
+      </select>
+    </div>
 
-  <div class="navbar-right">
-    <button id="loginButton">Login</button>
-  </div>
-</nav>
-    
+    <div class="navbar-right">
+      <button id="loginButton">Login</button>
+    </div>
+  </nav>
+
+  <!-- Hauptinhalt -->
   <div class="container">
     <h1>Kappa Quests</h1>
-    <select id="questStatusFilter">
-      <option value="all">Alle</option>
-     <option value="completed">Nur fertige</option>
-      <option value="incomplete">Nur unfertige</option>
-    </select>
-    <input type="text" id="questFilter" placeholder="Suche Quests...">
 
+    <!-- Filterleiste -->
+    <div class="filter-bar">
+      <select id="questStatusFilter" title="Statusfilter">
+        <option value="all">Alle</option>
+        <option value="completed">Nur fertige</option>
+        <option value="incomplete">Nur unfertige</option>
+      </select>
+
+      <input type="text" id="questFilter" placeholder="Suche Quests..." title="Quests durchsuchen" />
+    </div>
+
+    <!-- Container für Quests -->
     <div id="questContainer"></div>
   </div>
-    <script src="KappaQuests.js"></script>
+
+  <script src="KappaQuests.js"></script>
 </body>
 </html>
